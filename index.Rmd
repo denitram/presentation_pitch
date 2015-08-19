@@ -13,7 +13,10 @@ mode        : selfcontained # {standalone, draft}
 
 ## Wage data exploration
 
-The appplication is hosted on shinyapss.io and can be accessed here: [Shiny application](https://denitram.shinyapps.io/shiny_test).
+>  The appplication is hosted on shinyapss.io and can be accessed here: [Shiny application](https://denitram.shinyapps.io/shiny_test).  
+
+>  The shiny application's code is published to Github and can be accessed here: [Code](https://github.com/denitram/wage_shiny_app.git)
+
 
 >  It demonstrates some aspects of a `Shiny's application` and produces plots of the `Wage` dataset witch is available in the `ISLR` package.  
 
