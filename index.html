@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exploring Wage dataset</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Exploring Wage dataset">
+  <meta name="author" content="Martine Dubourg">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Exploring Wage dataset</h1>
+    <h2>Developping Data Products Project</h2>
+    <p>Martine Dubourg<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Wage data exploration</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The appplication is hosted on shinyapss.io and can be accessed here: <a href="https://denitram.shinyapps.io/shiny_test">Shiny application</a>.</p>
+
+<blockquote>
+<p>It demonstrates some aspects of a <code>Shiny&#39;s application</code> and produces plots of the <code>Wage</code> dataset witch is available in the <code>ISLR</code> package.  </p>
+
+<p>The goal of producing this exploratory plots is to better understand the relationship between the different variables and detect variables that might be important in a model.</p>
+</blockquote>
+
+<h3>Content</h3>
+
+<p><code>Slide 3</code>: Side panel explained<br>
+<code>Slide 4</code>: Preparation of the dataset<br>
+<code>Slide 5</code>: Plotting example  </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Shiny application</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:50%;'>
+  <h3>Sidebar panel</h3>
+
+<p><img src="./assets/img/sidebar.png" alt="sidebar"></p>
+
+</div>
+<div style='float:right;width:50%;'>
+  <h3>Functionality</h3>
+
+<p>In thet sidebar panel we use <code>Shiny widgets</code> to interract with the plot. </p>
+
+<blockquote>
+<p><code>Select box</code><br>
+   Choices between Scatter Plot, Box Plot, Violin, Step and Density Plot<br>
+ <code>Radio buttons</code><br>
+   Colors the data according to the selected group<br>
+ <code>Checkbox</code><br>
+   Conditional panel only shows when Scatter plot is selected </p>
+</blockquote>
+
+</div>
+<div>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Loading and Preparing the data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(shiny)
+library(ISLR); library(ggplot2); library(caret);
+data(Wage)
+</code></pre>
+
+<p><code>Get training/test sets</code>  </p>
+
+<pre><code class="r">inTrain &lt;- createDataPartition(y=Wage$wage, p=0.7, list=FALSE)
+training &lt;- Wage[inTrain,]; testing &lt;- Wage[-inTrain,]
+dim(training); dim(testing)
+</code></pre>
+
+<pre><code>## [1] 2102   12
+</code></pre>
+
+<pre><code>## [1] 898  12
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Plotting the Wage data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(x = age, y = wage, colour = jobclass, data = training) + geom = c(points) 
+</code></pre>
+
+<div style='float:left;width:60%;'>
+  <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+<pre><code>## Error in +geom = c(points): object &#39;geom&#39; not found
+</code></pre>
+
+</div>
+<div style='float:right;width:40%;'>
+  <p>We want to explore the relation between <code>wage</code> and <code>age</code> in respect with others variables, in this example <code>Job Class</code>.  </p>
+
+<p>The plot shows that most of the individuals that are up
+in the above chunk comes from the information
+based jobs as opposed to the industrial jobs.</p>
+
+</div>
+<div>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Wage data exploration'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Shiny application'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Loading and Preparing the data'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Plotting the Wage data'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
